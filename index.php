@@ -1,10 +1,22 @@
 <?php 
+session_start();
 require_once 'config/koneksi.php';
+
+if(!isset($_SESSION['login'])) {
+    header("Location: login.php");
+    exit;
+}
 
 $page = @$_GET['p'];
 $aksi = @$_GET['aksi'];
 
+// masih bug
+// di halaman tambah transaksi
+// di halaman transaksi/perpanjang.php
 ?>
+<pre>
+<?php var_dump($_SESSION['login']);  ?>
+</pre>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -27,11 +39,17 @@ $aksi = @$_GET['aksi'];
             } else if($page == 'anggota') {
                 if($aksi == 'tambah') {
                     echo "Tambah Anggota";
+                } else if($aksi == 'ubah') {
+                    echo "Ubah Anggota";
                 } else {
                     echo "Halaman Anggota";
                 }
             } else if($page == 'transaksi') {
-                echo "Halaman Transaksi";
+                if($aksi == 'tambah') {
+                    echo "Tambah Transaksi";
+                } else {
+                    echo "Halaman Transaksi";
+                }
             } else {
                 echo "Dashboard";
             }
@@ -72,7 +90,7 @@ $aksi = @$_GET['aksi'];
                         <a class="dropdown-item" href="#">Settings</a>
                         <a class="dropdown-item" href="#">Activity Log</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="login.html">Logout</a>
+                        <a class="dropdown-item" href="logout.php">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -129,10 +147,20 @@ $aksi = @$_GET['aksi'];
                             require_once 'page/anggota/anggota.php';
                         } else if($aksi == 'tambah') {
                             require_once 'page/anggota/tambah.php';
+                        } else if($aksi == 'ubah') {
+                            require_once 'page/anggota/ubah.php';
+                        } else if($aksi == 'hapus') {
+                            require_once 'page/anggota/hapus.php';
                         }
                     } else if($page == 'transaksi') {
                         if($aksi == '') {
                             require_once 'page/transaksi/transaksi.php';
+                        } else if($aksi == 'tambah') {
+                            require_once 'page/transaksi/tambah.php';
+                        } else if($aksi == 'kembali') {
+                            require_once 'page/transaksi/kembali.php';
+                        } else if($aksi == 'perpanjang') {
+                            require_once 'page/transaksi/perpanjang.php';
                         }
                     } else { ?>
                         <h1 class="mt-4">Dashboard</h1>

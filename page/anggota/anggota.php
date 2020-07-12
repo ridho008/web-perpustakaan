@@ -8,8 +8,12 @@ $ambilAnggota = $conn->query("SELECT * FROM tb_anggota ORDER BY id_anggota DESC"
     <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
     <li class="breadcrumb-item active">data anggota</li>
 </ol>
-<div class="col-md-6">
+<div class="col-md-12">
     <a href="?p=anggota&aksi=tambah" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah Anggota</a>
+    <a href="./laporan/laporan_anggota_excel.php" target="_blank" class="btn btn-success mb-3"><i class="fa fa-file-excel"></i>
+ Export to Excel</a>
+ <a href="./laporan/laporan_anggota_pdf.php" target="_blank" class="btn btn-danger mb-3"><i class="fa fa-file-pdf"></i>
+ Export to PDF</a>
 </div>
 <div class="card mb-4">
     <div class="card-header">
@@ -44,8 +48,8 @@ $ambilAnggota = $conn->query("SELECT * FROM tb_anggota ORDER BY id_anggota DESC"
                         <td><?= $jk; ?></td>
                         <td><?= $pecahAnggota['prodi']; ?></td>
                         <td>
-                            <a href="?p=buku&aksi=ubah&id=<?= $pecahBuku['id_buku']; ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
-                            <a href="?p=buku&aksi=hapus&id=<?= $pecahBuku['id_buku']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash" onclick="return confirm('Yakin ?')"></i></a>
+                            <a href="?p=anggota&aksi=ubah&id=<?= $pecahAnggota['id_anggota']; ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
+                            <a href="?p=anggota&aksi=hapus&id=<?= $pecahAnggota['id_anggota']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash" onclick="return confirm('Yakin ?')"></i></a>
                         </td>
                     </tr>
                     <?php } ?>
