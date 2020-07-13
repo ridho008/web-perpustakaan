@@ -55,7 +55,7 @@ $sql = $conn->query("SELECT * FROM tb_transaksi INNER JOIN tb_buku
                         	<?php 
                         	$denda = 1000;
                         	$tgl_dateline = $pecah['tgl_kembali'];
-                        	$tgl_kembali = date('Y-m-d');
+                        	$tgl_kembali = date('d-m-Y');
 
                         	$lambat = terlambat($tgl_dateline, $tgl_kembali);
                         	$denda1 = $lambat * $denda;

@@ -14,9 +14,9 @@ $aksi = @$_GET['aksi'];
 // di halaman tambah transaksi
 // di halaman transaksi/perpanjang.php
 ?>
-<pre>
+<!-- <pre>
 <?php var_dump($_SESSION['login']);  ?>
-</pre>
+</pre> -->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -128,6 +128,7 @@ $aksi = @$_GET['aksi'];
             </div>
             <div id="layoutSidenav_content">
                 <main>
+                    <marquee behavior="scroll" class="btn btn-dark">Selamat Datang <b><?= $_SESSION['login']['nama']; ?></b> Aplikasi Perpustakaan Sederhana</marquee>
                     <div class="container-fluid">
                         <!-- <h1 class="mt-4">Static Navigation</h1> -->
                     <?php 
